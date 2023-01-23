@@ -1,0 +1,40 @@
+<div class="form-container mat-elevation-z5">
+    <h1>Kayıt Ol</h1>
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <input matInput placeholder="Ad-Soyad" formControlName="name" />
+            <mat-error *ngIf="name?.errors?.['required']">
+                Ad-Soyad
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" />
+            <mat-error *ngIf="email?.errors?.['required']">
+                Email 
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+                Please enter a correct email format
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Şifre" formControlName="password" type="password" />
+            <mat-error *ngIf="password?.errors?.['required']">
+                Şifre
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Şifre tekrar" formControlName="confirmPassword" type="password" />
+            <mat-error *ngIf="confirmPassword?.errors?.['required']">
+                Şifre Tekrar
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+            Passwords should match
+        </mat-error>
+        <div class="center margin-top">
+            <button mat-raised-button color="primary" type="submit">
+                Kayıt Ol
+            </button>
+        </div>
+    </form>
+</div>
